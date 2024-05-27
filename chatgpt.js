@@ -1,5 +1,5 @@
 
-const API_KEY='';
+const API_KEY='sk-proj-mTUyZ9VZ4hOefRTIpQEdT3BlbkFJDxId7QAAIkddSuTmCeXG';
 const form= document.getElementById('chat-form')//$("#");
 const mytextInput = document.getElementById('myText');
 const responseTextarea = document.getElementById('response');
