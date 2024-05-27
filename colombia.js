@@ -15,7 +15,7 @@ function resetMap(){
 }
 
 var myIcon = L.icon({
-  iconUrl: 'iconoF.JPG',
+  iconUrl: 'iconoF.jpg',
   iconSize: [20, 20],
   iconAnchor: [22, 94]
 });
