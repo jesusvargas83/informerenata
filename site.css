@@ -45,14 +45,16 @@ header {
 }
 
 .sidebar {
+  z-index: 800;
   position: fixed;
   width: 20%;
   right: 20px;
-  background: var(--sidebar-color);
+  background: transparent;
   padding: 10px 14px;
 }
 
 .sidebarM {
+  z-index: 800 ;
   position: fixed;
   right: 10px;
   background: var(--primary-color);
