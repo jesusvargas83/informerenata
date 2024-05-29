@@ -284,6 +284,8 @@ footer {
     display: none;
     width: 60%;
     background-color: transparent;
+    z-index: 800;
+    right: 5px;
   }
 
   .sidebarM {
