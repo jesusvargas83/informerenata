@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informe de Resultados</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>		
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -13,23 +14,17 @@
     
 </head>
 
-<center>
+
     <body>	
-        <header>
+        <header class="content-fluid">
             <nav class="navbar navbar-expand-lg barra-superior-govco" aria-label="Barra superior">
                 <a href="https://www.gov.co/" target="_blank" aria-label="Portal del Estado Colombiano - GOV.CO"></a>
               </nav>
 
-              <div class="row">
-                <div class="col-md-4 mt-2 mb-2 text-start">
-                    <img class="ms-5"  src="logoClic.jpeg" alt="Texto alternativo" width="200" height="60">
-                </div>
-                <div class="col-md-4 mt-2 mb-2">
-                    <img  src="logo.jpg" alt="Texto alternativo" width="200" height="60">
-                </div>
-                <div class="col-md-4 mt-2 mb-2 text-end">
-                    <img class="me-5" src="logoMaterial.jpeg" alt="Texto alternativo" width="100" height="60">
-                </div>
+              <div class="d-flex justify-content-between px-2 my-2">
+                    <img class="img-header"  src="logoClic.jpeg" alt="Texto alternativo"  >
+                    <img  src="logo.jpg" alt="Texto alternativo" class="img-header">
+                    <img class="img-header" src="logoMaterial.jpeg" alt="Texto alternativo">
               </div>
 
               <ul class="nav nav-tabs nav-justified">
@@ -46,62 +41,69 @@
 
         </header>
 
-    <div class="contenido ">
+    <div class="contenido container ">
 
+            <div class="sidebarM">
+                <i class="bx bx-home-alt icon"></i>
+            </div>
+            <div class="sidebar">
+                <div class="menu-bar">
+                    <div class="menu">
+                        <ul class="menu-links">
+                            <li class="nav-link">
+                                <a href="javascript:abrirModal('DatosProyectoModal')">
+                                    <i class="bx bx-home-alt icon"></i>
+                                    <span class="text nav-text">Datos del proyecto</span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="javascript:abrirModal('PilaresProyectoModal')">
+                                    <i class="bx bx-home-alt icon"></i>
+                                    <span class="text nav-text">Pilares del Proyecto</span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="javascript:abrirModal('CursosModal')">
+                                    <i class="bx bx-home-alt icon"></i>
+                                    <span class="text nav-text">Cursos</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
 <div class="row">
-    <div class="col-md-10">
-        <h1>Lugares donde se ejecutó el proyecto</h1>
+    <div class="col-12">
+        <h1 class="text-center">Lugares donde se ejecutó el proyecto</h1>
         <br>
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-5">
-                        <select name="select-depto" id="select-depto" class="form-control" >
-                            <option value="-1">Seleccione un departamento...</option>
-                            <!-- <option value="5.638118,-73.526864">Villa de Leiva-Boyacá</option>			 -->
-                        </select>   
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-md-5 mb-2 mb-md-0">
+                            <select name="select-depto" id="select-depto" class="form-control" >
+                                <option value="-1">Seleccione un departamento...</option>
+                                <!-- <option value="5.638118,-73.526864">Villa de Leiva-Boyacá</option>			 -->
+                            </select>   
+                        </div>
+                        <div class="col-md-4 mb-2 mb-md-0">
+                            <select name="select-location" id="select-location" class="form-control" >
+                                <option value="-1">Seleccione un municipio...</option>
+                                <!-- <option value="5.638118,-73.526864">Villa de Leiva-Boyacá</option>			 -->
+                            </select>   
+                        </div>
+                        <div style="text-align: right;" class="col-md-3">
+                            <button onclick="resetMap()" type="button" class="btn btn-primary">Limpiar Mapa</button>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <select name="select-location" id="select-location" class="form-control" >
-                            <option value="-1">Seleccione un municipio...</option>
-                            <!-- <option value="5.638118,-73.526864">Villa de Leiva-Boyacá</option>			 -->
-                        </select>   
-                    </div>
-                    <div style="text-align: right;" class="col-md-3">
-                        <button onclick="resetMap()" type="button" class="btn btn-primary">Limpiar Mapa</button>
-                    </div>
+                <br>
+                <div id="map"></div>
                 </div>
             </div>
-            <br>
-            <div class="col-md-8" id="map"></div>
+                
     </div>
-    <div class="col-md-2">
-        <div class="sidebar">
-            <div class="menu-bar">
-                <div class="menu">
-                    <ul class="menu-links">
-                        <li class="nav-link">
-                            <a href="javascript:abrirModal('DatosProyectoModal')">
-                                <i class="bx bx-home-alt icon"></i>
-                                <span class="text nav-text">Datos del proyecto</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="javascript:abrirModal('PilaresProyectoModal')">
-                                <i class="bx bx-home-alt icon"></i>
-                                <span class="text nav-text">Pilares del Proyecto</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="javascript:abrirModal('CursosModal')">
-                                <i class="bx bx-home-alt icon"></i>
-                                <span class="text nav-text">Cursos</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+
 </div>
            
         
@@ -120,7 +122,7 @@
             </footer>
         </div>
     </body>
-    </center>
+
     <!-- //modales// -->
     <div class="modal" id="DatosProyectoModal" tabindex="-1">
         <div class="modal-dialog modal-xl">
