@@ -5,20 +5,39 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-document.getElementById('select-location').addEventListener('change',function(e){
-  let coords = e.target.value.split(",");
-  map.flyTo(coords,13);
-})
-
-function resetMap(){
-    map.setView([4.639386,-74.082412],6)
-}
-
 var myIcon = L.icon({
   iconUrl: 'iconoF.jpg',
   iconSize: [20, 20],
   iconAnchor: [22, 94]
 });
+
+document.getElementById('select-location').addEventListener('change',function(e){
+  $(".leaflet-marker-icon").remove(); 
+  $(".leaflet-popup").remove();
+  let coords = e.target.value.split(",");
+  let mcpio = $("#select-location option:selected").text();
+  map.flyTo(coords,13);
+  map.once('moveend', ()=> {
+    L.marker([coords[0], coords[1]],{icon: myIcon}).addTo(map).bindPopup(`<a href="javascript:abrirModalDatos('${mcpio}')">Ver más...</a>`);
+  })
+  
+})
+
+function resetMap(){
+  $("#select-depto").val('-1')
+  var select = document.getElementsByName("select-location")[0];
+  $("#select-location").empty();
+  var option = document.createElement("option");
+  option.text = "Seleccione un municipio...";
+  option.value = "-1";
+  select.add(option);
+
+    map.setView([4.639386,-74.082412],6)
+    $(".leaflet-marker-icon").remove();
+    $(".leaflet-popup").remove();
+}
+
+
 var array = ['Amazonas','Antioquia','Arauca','Atlántico','Bolívar','Boyacá','Caldas','Caquetá','Casanare','Cauca','Cesar','Chocó','Cundinamarca','Guaviare','La Guajira','Magdalena','Meta','Nariño','Norte de Santander','Putumayo','Quindío','Risaralda','Santander','Tolima'];
 
 var json = [
@@ -340,9 +359,9 @@ var json = [
   }
 ];
 
-$.each(json, function(i, item) {
-  L.marker([item.lat, item.long],{icon: myIcon}).addTo(map).bindPopup(`<a href="javascript:abrirModalDatos('${item.mcpio}')">Ver más...</a>`);
-});
+//$.each(json, function(i, item) {
+  //L.marker([item.lat, item.long],{icon: myIcon}).addTo(map).bindPopup(`<a href="javascript:abrirModalDatos('${item.mcpio}')">Ver más...</a>`);
+//});
 
 function irAlInicio() {
   window.scrollTo({top: 0, behavior: 'smooth'});
