@@ -372,14 +372,13 @@ function abrirModalDatos(id){
   let informacionMunicipios = json.find((item) =>{
     return item.mcpio===id
   })
-console.log(informacionMunicipios);
 
  $("#nomMcpio").text(id);
  $("#contenidoCarrusel").empty();
  $("#contenidoWorkshop").empty();
 
  informacionMunicipios.workshops.forEach((item, index)=>{
-  console.log(item.nro);
+  
   $("#contenidoWorkshop").append(`
   <div class="mt-2"><h4>Workshop # ${item.nro}</h3></div>
   <div><strong>Fecha: </strong> ${item.fecha}</div>
@@ -390,7 +389,7 @@ console.log(informacionMunicipios);
 })
 
  informacionMunicipios.imagenes.forEach((item, index)=>{
-    $("#contenidoCarrusel").append(`<div class="carousel-item ${index == 0? 'active':''}"><img src="${item}" class="altura" alt="..."></div>`)
+    $("#contenidoCarrusel").append(`<div class="carousel-item carousel-item-img ${index == 0? 'active':''}"><img src="${item}" class="altura2" alt="..."></div>`)
  })
  const myModal = new bootstrap.Modal("#workShopModal")  
  myModal.show();

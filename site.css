@@ -11,7 +11,7 @@
   /* Colors */
   --body-color: #e4e9f7;
   --sidebar-color: #fff;
-  --primary-color: #695cf3;
+  --primary-color: #1a2a69;
   --primary-color-light: #f6f5ff;
   --toggle-color: #ddd;
   --text-color: #707070;
@@ -112,7 +112,7 @@ header {
 table {
   table-layout: fixed;
   width: 100%;
-  border: 1px solid purple;
+  border: 1px solid #1a2a69;
 }
 
 thead th:nth-child(1) {
@@ -133,7 +133,7 @@ thead th:nth-child(4) {
 
 .modal-body td {
   padding: 20px;
-  border: 1px solid purple;
+  border: 1px solid #1a2a69;
 }
 
 .logo-aut-header-govco {
@@ -188,7 +188,7 @@ thead th:nth-child(4) {
 
 /* Barra superior */
 .barra-superior-govco {
-  background-color: #3366cc;
+  background-color: #1a2a69;
   width: 100%;
   height: 3rem;
   padding-left: 4.375rem;
@@ -239,20 +239,23 @@ thead th:nth-child(4) {
 }
 
 .otroA {
-  border-bottom: 3px solid #695cf3;
-  color: #695cf3;
+  border-bottom: 3px solid #1a2a69;
+  color: #1a2a69;
   border-top: none;
+}
+.otroA a{
+  color: #1a2a69;
 }
 
 .otroA:hover a {
   border-bottom: 3px solid #695cf3;
   color: #fff;
-  background-color: #695cf3;
+  background-color: #1a2a69;
   border-top: none;
 }
 
 footer {
-  background-color: #3366cc;
+  background-color: #1a2a69;
   color: #fff;
 }
 
@@ -260,10 +263,16 @@ footer {
   width: 50%;
   height: 500px;
 }
+
+.altura2 {
+  width: 85%;
+}
 .carousel-item {
   text-align: center;
 }
-
+.carousel-item-img{
+  min-height: 500px;
+}
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
   background-color: rgba(0, 0, 0, 0.5);
@@ -293,4 +302,8 @@ footer {
   .sidebarM {
     display: block;
   }
+}
+
+.btn{
+  background-color: #1a2a69;
 }
